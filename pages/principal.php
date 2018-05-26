@@ -43,7 +43,7 @@
 
                                 echo "<div class='card-action'>";
                                     echo "<div class='row'>";
-                                        echo "<a href='#' onclick='M.toast({html: `hola`, classes: `rounded`})'>Editar...</a>";
+                                        echo "<a href='#' value='".$row["id"]."' onclick='M.toast({html: `".$row["id"]."`, classes: `rounded`})'>Editar...</a>";
                                         echo "<a class='switch right'>";
                                             echo "<label>";
                                                 echo "Inactivo";
@@ -60,16 +60,14 @@
                     }
                 }
             ?>
-                                                
-                                                
-                                                
-                                                
-                                            
-                                        
-                
-
-
+               
         </div>
+    </div>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red modal-trigger" href="#modal1">
+            <i class="large material-icons" href="#modal1">add</i>
+        </a>
     </div>
 
     <script src="./js/jquery.js"></script>
@@ -81,8 +79,54 @@
             $('.materialboxed').materialbox();
             $('.slider').slider();
             $('.carousel').carousel();
+            $('.modal').modal();
         });
     </script>
 </body>
+
+<!-- Modal Agregar -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>NUEVO REGISTRO</h4>
+    
+        <div class="row">
+            <form enctype="multipart/form-data" action="pages/agregarServicio.php" method="post" class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input  name="txtTitulo" type="text" required class="validate">
+                        <label for="first_name">Título del contenido</label>
+                    </div>
+                </div>
+                <div class="row">
+                    
+                    <div class="input-field col s12">
+                        <textarea name="txtDescripcion" required class="materialize-textarea"></textarea>
+                        <label for="textarea1">Descripción del contenido</label>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Seleccione una imagen</span>
+                            <input name="userfile" required type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="submit">ENVIAR</button> -->
+                <div class="fixed-action-btn">
+                    <button type="submit" class="btn-floating btn-large red modal-trigger" href="#">
+                        <i class="large material-icons" href="#">save</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+   
+</div>
 
 </html>
