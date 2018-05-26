@@ -1,0 +1,20 @@
+.svFixed {
+    transform: translateX(0px);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.foto {
+    width: 100%;
+}
+
+.sidenavLeft {
+    width: 20% !important;
+    min-width: 255px;
+}
+
+.svFixed {
+    transform: translateX(0px);
+}
