@@ -75,7 +75,7 @@
     <main>
         <div class="row">
             <?php 
-                include 'principal.php';
+                include 'pages/principal.php';
             ?>
         </div>
     </main>
