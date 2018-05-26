@@ -19,7 +19,7 @@
     <?php
 function saludar(){
 
-    echo "Hola de nuevo";
+    echo "Hola Mundo";
 }
 ?>
         <header>
