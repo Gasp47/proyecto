@@ -2176,13 +2176,7 @@ main {
 header,
 main,
 footer {
-    padding-left: 285px !important;
-}
-
-header,
-main,
-footer fixed {
-    padding-left: 0px;
+    padding-left: 265px;
 }
 
 figure {
@@ -2603,6 +2597,12 @@ video.responsive-video {
         width: 80%;
         overflow: hidden;
         white-space: nowrap
+    }
+    .zxxx,
+    header,
+    main,
+    footer {
+        padding-left: 0px !important;
     }
 }
 
