@@ -21,3 +21,13 @@
 .top {
     padding-top: 35px !important;
 }
+
+.text-color-green {
+    color: green !important;
+    font-weight: bold;
+}
+
+.text-color-red {
+    color: red !important;
+    font-weight: bold;
+}

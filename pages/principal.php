@@ -25,7 +25,7 @@
     <div class="">
         <div class="row">
             <?php
-                $result=$mysqli->query("SELECT * FROM servicios ORDER BY id DESC");
+                $result=$mysqli->query("SELECT * FROM `servicios` ORDER BY status DESC");
                 if($result)
                 {
                     while($row=$result->fetch_array(MYSQLI_ASSOC))
@@ -38,20 +38,28 @@
                                 echo "</div>";
 
                                 echo "<div class='card-content'>";
-                                    echo "<p>".$row["descripcion"]."</p>";
+                                    $tamaño = strlen ($row["descripcion"]);
+                                    if($tamaño > 200){
+                                        $tamaño = 200;
+                                    }
+
+                                    echo "<p>".substr( $row["descripcion"],0,$tamaño)."...</p>";
                                 echo "</div>";
 
                                 echo "<div class='card-action'>";
                                     echo "<div class='row'>";
-                                        echo "<a href='#' value='".$row["id"]."' onclick='M.toast({html: `".$row["id"]."`, classes: `rounded`})'>Editar...</a>";
-                                        echo "<a class='switch right'>";
-                                            echo "<label>";
-                                                echo "Inactivo";
-                                                echo "<input type='checkbox'>";
-                                                echo "<span class='lever'></span>";
-                                                echo "Activo";
-                                            echo "</label>";
-                                        echo "</a>";
+                                        echo "<a href='#' value='".$row["id"]."' onclick='M.toast({html: `".$row["id"]."`, classes: `rounded`})'>EDITAR PUBLICIÓN</a>";
+                                        
+                                        if($row["status"] == 1){
+                                            echo "<a class='text-color-green right'>";
+                                                echo "<i class='material-icons right'>check</i>Activo";
+                                            echo "</a>";   
+                                        }else{
+                                            echo "<a class='text-color-red right'>";
+                                                echo "<i class='material-icons right'>clear</i>Inactivo";
+                                            echo "</a>";
+                                        }
+
                                     echo "</div>";
                                 echo "</div>";  
 
@@ -63,6 +71,8 @@
                
         </div>
     </div>
+
+    
 
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large red modal-trigger" href="#modal1">
