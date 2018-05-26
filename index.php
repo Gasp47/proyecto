@@ -1,23 +1,26 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Materilize Cursos</title>
+    <title>Proyecto</title>
 
     <link href="css/index.css" type="text/css" rel="stylesheet">
 
     <link href="css/materialize.min.css" type="text/css" rel="stylesheet">
     <link href="css/style.css?0.0" type="text/css" rel="stylesheet">
-
 </head>
-
 <body>
+<header>
 
-
-    <header>
+<?php 
+    function saludar(){
+        echo "Hola mundo";
+    }
+?>
         <nav>
             <!-- navbar content here  -->
             <div class="nav-wrapper #9ccc65 light-green lighten-1">
@@ -70,9 +73,9 @@
     </header>
 
     <main>
-        <div class="container">
-            <?php
-            include 'inicio.php';
+        <div class="row">
+            <?php 
+                include 'principal.php';
             ?>
         </div>
     </main>
@@ -91,8 +94,6 @@
             $('.carousel').carousel();
         });
     </script>
-
-
 </body>
-
 </html>
+

@@ -1,7 +1,5 @@
 <?php
-########## imagen_mostrar.php ##########
-# debe recibir el id de la imagen a mostrar
-# http://www.lawebdelprogramador.com
+
  
 # Conectamos con MySQL
 $mysqli=new mysqli("localhost","root","","proyecto");
@@ -10,10 +8,9 @@ if (mysqli_connect_errno()) {
 }
  
 # Buscamos la imagen a mostrar
-$result=$mysqli->query("SELECT * FROM `imagen` WHERE id=".$_GET["id"]);
+$result=$mysqli->query("SELECT * FROM `servicios` WHERE id=".$_GET["id"]);
 $row=$result->fetch_array(MYSQLI_ASSOC);
  
 # Mostramos la imagen
-header("Content-type:".$row["tipo"]);
 echo $row["imagen"];
 ?>
