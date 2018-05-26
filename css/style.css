@@ -17,3 +17,7 @@
 .svFixed {
     transform: translateX(0px);
 }
+
+.top {
+    padding-top: 35px !important;
+}

@@ -45,7 +45,7 @@
             </li>
             
             <li class="bold">
-                <a href="#" onclick="M.toast({html: '<?php echo saludar(); ?>'})" class="waves-effect waves-teal">
+                <a href="#" onclick="M.toast({html: '<?php echo saludar(); ?>',  classes: 'rounded'})" class="waves-effect waves-teal">
                     <i class="material-icons">home</i> Home
                 </a>
             </li>
