@@ -40,6 +40,7 @@
                     <a><span class="white-text email">gasparcarrillo@gmail.com</span></a>
                 </div>
             </li>
+            
             <li class="bold">
                 <a href="#" onclick="M.toast({html: '<?php echo saludar(); ?>'})" class="waves-effect waves-teal">
                     <i class="material-icons">home</i> Home
@@ -69,9 +70,10 @@
     </header>
 
     <main>
-        123
         <div class="container">
-            123
+            <?php
+            include 'inicio.php';
+            ?>
         </div>
     </main>
 
