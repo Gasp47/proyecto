@@ -1,5 +1,5 @@
 <?php
-    include 'conexion.php';
+    include 'DAO/conexion.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
                         echo "<div class='col s4'>";
                             echo "<div class='card'>";
                                 echo "<div class='card-image'>";
-                                    echo "<img  src='./pages/imagen_mostrar.php?id=".$row["id"]."' width=300  height=200>";
+                                    echo "<img  src='./pages/DAO/carruselDAO.php?id=".$row["id"]."' width=300  height=200>";
                                     echo "<span class='card-title'>".$row["titulo"]."</span>";
                                 echo "</div>";
 
@@ -96,7 +96,7 @@
         <h4>NUEVO REGISTRO</h4>
     
         <div class="row">
-            <form enctype="multipart/form-data" action="pages/agregarCarrusel.php" method="post" class="col s12">
+            <form enctype="multipart/form-data" action="pages/DAO/carruselDAO.php" method="post" class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
                         <input  name="txtTitulo" type="text" required class="validate">
@@ -139,7 +139,7 @@
         <h4>NUEVO REGISTRO</h4>
     
         <div class="row">
-            <form enctype="multipart/form-data" action="pages/agregarCarrusel.php" method="post" class="col s12">
+            <form enctype="multipart/form-data" action="pages/mostrarCarrusel.php" method="post" class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
                         <input  name="txtTitulo" type="text" required class="validate">
