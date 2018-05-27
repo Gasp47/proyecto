@@ -8,7 +8,7 @@ if (mysqli_connect_errno()) {
 }
  
 # Buscamos la imagen a mostrar
-$result=$mysqli->query("SELECT * FROM `servicios` WHERE id=".$_GET["id"]);
+$result=$mysqli->query("SELECT * FROM `carrusel` WHERE id=".$_GET["id"]);
 $row=$result->fetch_array(MYSQLI_ASSOC);
  
 # Mostramos la imagen

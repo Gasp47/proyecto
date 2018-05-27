@@ -19,7 +19,7 @@ if (is_uploaded_file($_FILES['userfile']["tmp_name"])){
     {
         $imagenEscapes=$mysqli->real_escape_string(file_get_contents($_FILES["userfile"]["tmp_name"]));
 
-        $sql="INSERT INTO `servicios` (titulo,descripcion,`status`,imagen) VALUES   
+        $sql="INSERT INTO `carrusel` (titulo,descripcion,`status`,imagen) VALUES   
             ('".$titulo."','".$descripcion."','1','".$imagenEscapes."')";
 
         

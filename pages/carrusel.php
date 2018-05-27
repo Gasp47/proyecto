@@ -23,7 +23,7 @@
     <div class="">
         <div class="row">
             <?php
-                $result=$mysqli->query("SELECT * FROM `servicios` ORDER BY status DESC");
+                $result=$mysqli->query("SELECT * FROM `carrusel` ORDER BY status DESC");
                 if($result){
                     while($row=$result->fetch_array(MYSQLI_ASSOC)){    
                         echo "<div class='col s4'>";
@@ -44,7 +44,7 @@
 
                                 echo "<div class='card-action'>";
                                     echo "<div class='row'>";
-                                        echo "<a href='#' value='".$row["id"]."' onclick='M.toast({html: `".$row["id"]."`, classes: `rounded`})'>EDITAR PUBLICIÓN</a>";
+                                        echo "<a href='#' value='".$row["id"]."' onclick='M.toast({html: `".$row["id"]."`, classes: `rounded`})'>EDITAR PUBLICACIÓN</a>";
                                         
                                         if($row["status"] == 1){
                                             echo "<a class='text-color-green right'>";
@@ -114,6 +114,49 @@
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Seleccione una imagen</span>
+                            <input name="userfile" required type="file" accept="image/x-png,image/gif,image/jpeg">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="submit">ENVIAR</button> -->
+                <div class="fixed-action-btn">
+                    <button type="submit" class="btn-floating btn-large red modal-trigger" href="#">
+                        <i class="large material-icons" href="#">save</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Agregar -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>NUEVO REGISTRO</h4>
+    
+        <div class="row">
+            <form enctype="multipart/form-data" action="pages/agregarCarrusel.php" method="post" class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input  name="txtTitulo" type="text" required class="validate">
+                        <label for="first_name">Título del contenido</label>
+                    </div>
+                </div>
+                <div class="row">
+                    
+                    <div class="input-field col s12">
+                        <textarea name="txtDescripcion" required class="materialize-textarea"></textarea>
+                        <label for="textarea1">Descripción del contenido</label>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Seleccione una imagen</span>
                             <input name="userfile" required type="file">
                         </div>
                         <div class="file-path-wrapper">
@@ -130,9 +173,6 @@
             </form>
         </div>
     </div>
-    
-    
-   
 </div>
 
 </html>
