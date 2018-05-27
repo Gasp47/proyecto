@@ -31,3 +31,7 @@
     color: red !important;
     font-weight: bold;
 }
+
+.alto-cuadro {
+    height: 450px;
+}

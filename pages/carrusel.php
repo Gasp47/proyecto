@@ -1,9 +1,5 @@
 <?php
-    # Conectamos con MySQL
-    $mysqli=new mysqli("localhost","root","","proyecto");
-    if (mysqli_connect_errno()) {
-        die("Error al conectar: ".mysqli_connect_error());
-    }
+    include 'conexion.php';
 ?>
 
 <!DOCTYPE html>
@@ -28,10 +24,8 @@
         <div class="row">
             <?php
                 $result=$mysqli->query("SELECT * FROM `servicios` ORDER BY status DESC");
-                if($result)
-                {
-                    while($row=$result->fetch_array(MYSQLI_ASSOC))
-                    {    
+                if($result){
+                    while($row=$result->fetch_array(MYSQLI_ASSOC)){    
                         echo "<div class='col s4'>";
                             echo "<div class='card'>";
                                 echo "<div class='card-image'>";
@@ -41,8 +35,8 @@
 
                                 echo "<div class='card-content'>";
                                     $tamaño = strlen ($row["descripcion"]);
-                                    if($tamaño > 200){
-                                        $tamaño = 200;
+                                    if($tamaño > 150){
+                                        $tamaño = 150;
                                     }
 
                                     echo "<p>".substr( $row["descripcion"],0,$tamaño)."...</p>";
@@ -102,7 +96,7 @@
         <h4>NUEVO REGISTRO</h4>
     
         <div class="row">
-            <form enctype="multipart/form-data" action="pages/agregarServicio.php" method="post" class="col s12">
+            <form enctype="multipart/form-data" action="pages/agregarCarrusel.php" method="post" class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
                         <input  name="txtTitulo" type="text" required class="validate">

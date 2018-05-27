@@ -24,7 +24,7 @@
         <nav>
             <!-- navbar content here  -->
             <div class="nav-wrapper #9ccc65 light-green lighten-1">
-                <a href="#" class="brand-logo">
+                <a href="#" class="brand-logo center">
                     <?php 
                         try{
                             if(isset( $_GET["id"] ) ){
@@ -112,7 +112,7 @@
                             
                             break;
                         case 2:
-                            include 'pages/principal.php';
+                            include 'pages/carrusel.php';
                             break;
                         case 3:
                             
