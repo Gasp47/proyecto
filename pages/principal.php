@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <title>princiapl</title>
 
     <link href="./css/index.css" type="text/css" rel="stylesheet">
 
@@ -22,6 +23,7 @@
 </head>
 
 <body>
+    
     <div class="">
         <div class="row">
             <?php

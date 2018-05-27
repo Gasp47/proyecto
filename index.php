@@ -24,6 +24,37 @@
         <nav>
             <!-- navbar content here  -->
             <div class="nav-wrapper #9ccc65 light-green lighten-1">
+                <a href="#" class="brand-logo">
+                    <?php 
+                        try{
+                            if(isset( $_GET["id"] ) ){
+                                switch ($_GET["id"] ){
+                                    case 1:
+                                        echo "Menú Principal";
+                                        break;
+                                    case 2:
+                                        echo "Carrusel";
+                                        break;
+                                    case 3:
+                                        echo "Servicios";
+                                        break;
+                                    case 4:
+                                        echo "Galería";
+                                        break;
+                                    default:
+                                        echo "Menú Principal";
+                                        break;
+                
+                                }
+                            }else{
+                                echo "Ninguno válido";
+                            }
+                        }catch (Exception $e){
+                            echo "Mal";
+                        }
+                        
+                    ?>
+                </a>
                 <a href="#" data-target="nav-mobie" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <ul class="right hide-on-med-and-down">
@@ -45,22 +76,22 @@
             </li>
             
             <li class="bold">
-                <a href="#" onclick="M.toast({html: '<?php echo saludar(); ?>',  classes: 'rounded'})" class="waves-effect waves-teal">
+                <a href="index.php?id=1" class="waves-effect waves-teal">
                     <i class="material-icons">home</i> Home
                 </a>
             </li>
             <li class="bold">
-                <a href="#" class="waves-effect waves-teal">
+                <a href="index.php?id=2" class="waves-effect waves-teal">
                     <i class="material-icons">image</i> Carrusel
                 </a>
             </li>
             <li class="bold">
-                <a href="#" class="waves-effect waves-teal">
+                <a href="index.php?id=3" class="waves-effect waves-teal">
                     <i class="material-icons">image</i> Servicios
                 </a>
             </li>
             <li class="bold">
-                <a href="#" class="waves-effect waves-teal">
+                <a href="index.php?id=4" class="waves-effect waves-teal">
                     <i class="material-icons">collections</i> Galería
                 </a>
             </li>
@@ -73,11 +104,35 @@
     </header>
 
     <main>
-        <div class="row">
-            <?php 
-                include 'pages/principal.php';
-            ?>
-        </div>
+        <?php 
+            try{
+                if(isset( $_GET["id"] ) ){
+                    switch ($_GET["id"] ){
+                        case 1:
+                            
+                            break;
+                        case 2:
+                            include 'pages/principal.php';
+                            break;
+                        case 3:
+                            
+                            break;
+                        case 4:
+                            
+                            break;
+                        default:
+                            echo "Ninguno válido";
+                            break;
+    
+                    }
+                }else{
+                    echo "Ninguno válido";
+                }
+            }catch (Exception $e){
+                echo "Mal";
+            }
+            
+        ?>
     </main>
 
 
