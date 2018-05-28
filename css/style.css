@@ -35,3 +35,9 @@
 .alto-cuadro {
     height: 450px;
 }
+
+.CardTitulo {
+    font-weight: bold !important;
+    color: black !important;
+    text-decoration: underline;
+}

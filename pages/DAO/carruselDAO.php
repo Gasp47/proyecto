@@ -13,7 +13,7 @@ switch($_GET["case"]){
         agregar($mysqli,$_POST["txtTitulo"],$_POST["txtDescripcion"]);
         break;
     case 2:
-        modificar($mysqli,$_POST["txtId"],$_POST["txtTitulo"],$_POST["txtDescripcion"]);
+        modificar($mysqli,$_POST["txtId"],$_POST["txtTitulo"],$_POST["txtDescripcion"],$_POST["txtCheck"]);
         break;
     
     default:
@@ -32,7 +32,7 @@ function mostrarImagen($mysqli){
     echo $row["imagen"];
 }
 
-function modificar($mysqli,$idT,$titulo,$descripcion){
+function modificar($mysqli,$idT,$titulo,$descripcion,$status){
     # Comprovamos que se haya subido un fichero
     if (is_uploaded_file($_FILES['userfile']["tmp_name"])){
 
@@ -41,7 +41,7 @@ function modificar($mysqli,$idT,$titulo,$descripcion){
         {
             $imagenEscapes=$mysqli->real_escape_string(file_get_contents($_FILES["userfile"]["tmp_name"]));
 
-            $sql="UPDATE carrusel SET titulo='".$titulo."', descripcion='".$descripcion."', imagen='". $imagenEscapes ."' WHERE id=".$idT;
+            $sql="UPDATE carrusel SET titulo='".$titulo."', status='".$status ."',descripcion='".$descripcion."', imagen='". $imagenEscapes ."' WHERE id=".$idT;
             
             $mysqli->query($sql);
 
@@ -55,7 +55,7 @@ function modificar($mysqli,$idT,$titulo,$descripcion){
         }
     }else{
 
-        $sql="UPDATE carrusel SET titulo='".$titulo."', descripcion='".$descripcion."' WHERE id=".$idT;
+        $sql="UPDATE carrusel SET titulo='".$titulo."', descripcion='".$descripcion."', status='".$status."' WHERE id=".$idT;
         
         $mysqli->query($sql);
         header('Location: ../../index.php?id=2');
