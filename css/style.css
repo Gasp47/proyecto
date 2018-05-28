@@ -41,3 +41,11 @@
     color: black !important;
     text-decoration: underline;
 }
+
+.negritas {
+    font-weight: bold !important;
+}
+
+.subrayado {
+    text-decoration: underline;
+}

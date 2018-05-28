@@ -45,7 +45,7 @@
 
                                 echo "<div class='card-action'>";
                                     echo "<div class='row'>";
-                                        echo "<a class='modal-trigger' href='#modal2' onclick='mostrarCliente(this.parentElement)' dir='".$row["id"]."' value='".$row["id"]."'>EDITAR PUBLICACIÓN</a>";
+                                        echo "<a class='modal-trigger negritas subrayado' href='#modal2' onclick='mostrarCliente(this.parentElement)' dir='".$row["id"]."' value='".$row["id"]."'>EDITAR PUBLICACIÓN</a>";
                                         
                                         echo "<span style='display:none;'class='id-imagen'>".$row["id"]."</span>";
                                         echo "<span style='display:none;'class='titulo-imagen'>".$row["titulo"]."</span>";
@@ -77,7 +77,7 @@
 
 
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red modal-trigger" href="#modal1">
+            <a class="btn-floating btn-large red modal-trigger tooltipped" data-position="left" data-tooltip="Agregar una publicación" href="#modal1">
                 <i class="large material-icons" href="#modal1">add</i>
             </a>
         </div>
@@ -116,7 +116,7 @@
                         </div>
                         <!-- <button type="submit">ENVIAR</button> -->
                         <div class="fixed-action-btn">
-                            <button type="submit" class="btn-floating btn-large red modal-trigger" href="#">
+                            <button type="submit" class="btn-floating btn-large red modal-trigger tooltipped" data-position="left" data-tooltip="Guardar Cambios" href="#">
                         <i class="large material-icons" href="#">save</i>
                     </button>
                         </div>
@@ -213,8 +213,8 @@
                         </div>
                         <!-- <button type="submit">ENVIAR</button> -->
                         <div class="fixed-action-btn">
-                            <button type="submit" class="btn-floating btn-large red modal-trigger" href="#">
-                        <i class="large material-icons" href="#">save</i>
+                            <button type="submit" class="btn-floating btn-large red modal-trigger tooltipped" data-position="left" data-tooltip="Guardar Cambios" href="#">
+                        <i class="large material-icons" href="#">edit</i>
                     </button>
                         </div>
                     </form>
@@ -233,6 +233,7 @@
                 $('.slider').slider();
                 $('.carousel').carousel();
                 $('.modal').modal();
+                $('.tooltipped').tooltip();
             });
         </script>
     </body>

@@ -1,4 +1,5 @@
 <?php
+include 'pages/DAO/conexion.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,12 +16,6 @@
 </head>
 <body>
 <header>
-
-<?php 
-    function saludar(){
-        echo "Hola mundo";
-    }
-?>
         <nav>
             <!-- navbar content here  -->
             <div class="nav-wrapper #9ccc65 light-green lighten-1">
@@ -69,9 +64,23 @@
                     <div class="background">
                         <img class="foto" src="img/imagen.jpg">
                     </div>
-                    <a href="#user"><img class="circle" src="img/avatar.png"></a>
-                    <a href="#name"><span class="white-text name">Gaspar Carrillo</span></a>
-                    <a><span class="white-text email">gasparcarrillo@gmail.com</span></a>
+                    
+                    <?php
+                        $result=$mysqli->query("SELECT * FROM `usuario` WHERE id=1");
+                        if($result){
+                            while($row=$result->fetch_array(MYSQLI_ASSOC)){  
+                    ?>
+
+                    
+
+                    <a href="#user"><img class="circle" src=<?php echo "./pages/DAO/indexDAO.php?id=".$row['id'] ?>></a>
+                    <a href="#name"><span class="white-text name"><?php echo $row["nombre"]." ".$row["apellidoP"]." ".$row["apellidoM"] ?></span></a>
+                    <a><span class="white-text email"><?php echo $row["correo"] ?></span></a>
+
+                    <?php   
+                            }
+                        }
+                    ?>
                 </div>
             </li>
             
@@ -151,4 +160,3 @@
     </script>
 </body>
 </html>
-
