@@ -1,5 +1,5 @@
 <?php
-    include 'conexion.php';
+    include 'DAO/conexion.php';
 ?>
 
 <!DOCTYPE html>

@@ -115,7 +115,7 @@
                             include 'pages/carrusel.php';
                             break;
                         case 3:
-                            
+                            include 'pages/servicios.php';
                             break;
                         case 4:
                             

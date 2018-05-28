@@ -26,11 +26,12 @@
                 $result=$mysqli->query("SELECT * FROM `carrusel` ORDER BY status DESC");
                 if($result){
                     while($row=$result->fetch_array(MYSQLI_ASSOC)){    
+                        
                         echo "<div class='col s4'>";
-                            echo "<div class='card'>";
+                            echo "<div  class='card'>";
                                 echo "<div class='card-image'>";
-                                    echo "<img  src='./pages/DAO/carruselDAO.php?id=".$row["id"]."' width=300  height=200>";
-                                    echo "<span class='card-title'>".$row["titulo"]."</span>";
+                                    echo "<img class='imagen-imagen' src='./pages/DAO/carruselDAO.php?id=".$row["id"]."' width=300  height=200>";
+                                    echo "<span class='card-title titulo-imagen'>".$row["titulo"]."</span>";
                                 echo "</div>";
 
                                 echo "<div class='card-content'>";
@@ -39,12 +40,16 @@
                                         $tamaño = 150;
                                     }
 
-                                    echo "<p>".substr( $row["descripcion"],0,$tamaño)."...</p>";
+                                    echo "<p class='descripcion-imagen'>".substr( $row["descripcion"],0,$tamaño)."...</p>";
                                 echo "</div>";
 
                                 echo "<div class='card-action'>";
                                     echo "<div class='row'>";
-                                        echo "<a href='#' value='".$row["id"]."' onclick='M.toast({html: `".$row["id"]."`, classes: `rounded`})'>EDITAR PUBLICACIÓN</a>";
+                                        echo "<a class='modal-trigger' href='#modal2' onclick='mostrarCliente(this.parentElement)' dir='".$row["id"]."' value='".$row["id"]."'>EDITAR PUBLICACIÓN</a>";
+                                        
+                                        echo "<span style='display:none;'class='id-imagen'>".$row["id"]."</span>";
+                                        echo "<span style='display:none;'class='titulo-imagen'>".$row["titulo"]."</span>";
+                                        echo "<span style='display:none;' class='descripcion-imagen'>".$row["descripcion"]."</span>";
                                         
                                         if($row["status"] == 1){
                                             echo "<a class='text-color-green right'>";
@@ -96,7 +101,7 @@
         <h4>NUEVO REGISTRO</h4>
     
         <div class="row">
-            <form enctype="multipart/form-data" action="pages/DAO/carruselDAO.php" method="post" class="col s12">
+            <form enctype="multipart/form-data" action="pages/DAO/carruselDAO.php?case=1" method="post" class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
                         <input  name="txtTitulo" type="text" required class="validate">
@@ -131,36 +136,55 @@
         </div>
     </div>
 </div>
+<script>
 
-
-<!-- Modal Agregar -->
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>NUEVO REGISTRO</h4>
+    function mostrarCliente(contenedor) {
+    var modal = document.getElementById('modal2');
     
+    modal.getElementsByClassName('id-modal')[0].innerText = contenedor.getElementsByClassName('id-imagen')[0].innerText;
+    // Cliente
+    modal.getElementsByClassName('titulo-modal')[0].innerText = contenedor.getElementsByClassName('titulo-imagen')[0].innerText;
+    // Descripcion
+    modal.getElementsByClassName('descripcion-modal')[0].innerText = contenedor.getElementsByClassName('descripcion-imagen')[0].innerText;
+
+
+}
+</script>
+
+<!-- Modal Editar -->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+       
+        <h4>EDITAR REGISTRO</h4>
+        
         <div class="row">
-            <form enctype="multipart/form-data" action="pages/mostrarCarrusel.php" method="post" class="col s12">
+            <form enctype="multipart/form-data" action="pages/DAO/carruselDAO.php?case=2" method="post" class="col s12">
                 <div class="row">
+                    <div class="col s12">
+                        <label >Descripción del contenido</label>
+                    </div>
                     <div class="input-field col s12">
-                        <input  name="txtTitulo" type="text" required class="validate">
-                        <label for="first_name">Título del contenido</label>
+                        <textarea name="txtTitulo" required class="materialize-textarea titulo-modal"></textarea>
+                        <textarea name="txtId" style="display:none;" required class="materialize-textarea id-modal"></textarea>
                     </div>
                 </div>
                 <div class="row">
                     
+                    <div class="col s12">
+                        <label >Descripción del contenido</label>
+                    </div>
                     <div class="input-field col s12">
-                        <textarea name="txtDescripcion" required class="materialize-textarea"></textarea>
-                        <label for="textarea1">Descripción del contenido</label>
+                        <textarea name="txtDescripcion" required class="materialize-textarea descripcion-modal"></textarea>
                     </div>  
                 </div>
                 <div class="row">
                     <div class="file-field input-field">
                         <div class="btn">
                             <span>Seleccione una imagen</span>
-                            <input name="userfile" required type="file">
+                            <input name="userfile" type="file" accept="image/x-png,image/gif,image/jpeg">
                         </div>
                         <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
+                            <input class="file-path validate" type="text" >
                         </div>
                     </div>
                 </div>
@@ -174,5 +198,6 @@
         </div>
     </div>
 </div>
+
 
 </html>

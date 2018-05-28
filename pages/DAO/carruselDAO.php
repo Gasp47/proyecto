@@ -4,11 +4,24 @@
 # Conectamos con MySQL
 include 'conexion.php';
 
-if(isset( $_GET["id"]))
-mostrarImagen($mysqli);
+if(isset( $_GET["id"])){
+    mostrarImagen($mysqli);
+}
 
-if(isset( $_POST["txtTitulo"] ) && isset($_POST['txtDescripcion'] ))
-agregar($mysqli,$_POST["txtTitulo"],$_POST["txtDescripcion"]);
+switch($_GET["case"]){
+    case 1:
+        agregar($mysqli,$_POST["txtTitulo"],$_POST["txtDescripcion"]);
+        break;
+    case 2:
+        modificar($mysqli,$_POST["txtId"],$_POST["txtTitulo"],$_POST["txtDescripcion"]);
+        break;
+    
+    default:
+        
+        break;
+}
+
+
  
 # Buscamos la imagen a mostrar
 function mostrarImagen($mysqli){
@@ -17,6 +30,37 @@ function mostrarImagen($mysqli){
     
     # Mostramos la imagen
     echo $row["imagen"];
+}
+
+function modificar($mysqli,$idT,$titulo,$descripcion){
+    # Comprovamos que se haya subido un fichero
+    if (is_uploaded_file($_FILES['userfile']["tmp_name"])){
+
+        # verificamos el formato de la imagen
+        if ($_FILES["userfile"]["type"]=="image/jpeg" || $_FILES["userfile"]["type"]=="image/pjpeg" || $_FILES["userfile"]["type"]=="image/gif" || $_FILES["userfile"]["type"]=="image/bmp" || $_FILES["userfile"]["type"]=="image/png")
+        {
+            $imagenEscapes=$mysqli->real_escape_string(file_get_contents($_FILES["userfile"]["tmp_name"]));
+
+            $sql="UPDATE carrusel SET titulo='".$titulo."', descripcion='".$descripcion."', imagen='". $imagenEscapes ."' WHERE id=".$idT;
+            
+            $mysqli->query($sql);
+
+            # Cogemos el identificador con que se ha guardado
+            $id=$mysqli->insert_id;
+
+            # Mostramos la imagen agregada
+            header('Location: ../../index.php?id=2');
+        }else{
+            echo "<div class='error'>Error: El formato de archivo tiene que ser JPG, GIF, BMP o PNG.</div>";
+        }
+    }else{
+
+        $sql="UPDATE carrusel SET titulo='".$titulo."', descripcion='".$descripcion."' WHERE id=".$idT;
+        
+        $mysqli->query($sql);
+        header('Location: ../../index.php?id=2');
+        
+    }
 }
 
 
@@ -46,4 +90,6 @@ function agregar($mysqli,$titulo,$descripcion){
         }
     }
 }
+
+ 
 ?>
