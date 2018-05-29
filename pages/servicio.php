@@ -23,14 +23,14 @@
         <div class="">
             <div class="row">
                 <?php
-                $result=$mysqli->query("SELECT * FROM `carrusel` ORDER BY status DESC");
+                $result=$mysqli->query("SELECT * FROM `servicios` ORDER BY status DESC");
                 if($result){
                     while($row=$result->fetch_array(MYSQLI_ASSOC)){    
                         
                         echo "<div class='col s12 m4'>";
                             echo "<div  class='card'>";
                                 echo "<div class='card-image'>";
-                                    echo "<img class='imagen-imagen' src='./pages/DAO/carruselDAO.php?id=".$row["id"]."' width=300  height=200>";
+                                    echo "<img class='imagen-imagen' src='./pages/DAO/servicioDAO.php?id=".$row["id"]."' width=300  height=200>";
                                     echo "<span class='card-title titulo-imagen CardTitulo'>".$row["titulo"]."</span>";
                                 echo "</div>";
 
@@ -77,7 +77,7 @@
 
 
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red modal-trigger tooltipped pulse scale-transition scale-in" data-position="left" data-tooltip="Agregar una publicación" href="#modal1">
+            <a class="btn-floating btn-large red modal-trigger tooltipped pulse" data-position="left" data-tooltip="Agregar una publicación" href="#modal1">
                 <i class="large material-icons" href="#modal1">add</i>
             </a>
         </div>
@@ -89,7 +89,7 @@
                 <h4>NUEVO REGISTRO</h4>
 
                 <div class="row">
-                    <form enctype="multipart/form-data" action="pages/DAO/carruselDAO.php?case=1" method="post" class="col s12">
+                    <form enctype="multipart/form-data" action="pages/DAO/servicioDAO.php?case=1" method="post" class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
                                 <input name="txtTitulo" type="text" required class="validate">
@@ -171,7 +171,7 @@
 
 
                 <div class="row">
-                    <form enctype="multipart/form-data" action="pages/DAO/carruselDAO.php?case=2" method="post" class="col s12">
+                    <form enctype="multipart/form-data" action="pages/DAO/servicioDAO.php?case=2" method="post" class="col s12">
                         <div class="row">
                             <div class="col s12">
                                 <div class='switch right'> 

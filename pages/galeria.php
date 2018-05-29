@@ -1,3 +1,4 @@
+
 <?php
     include 'DAO/conexion.php';
 ?>
@@ -20,17 +21,48 @@
 
     <body>
 
-        <div class="">
-            <div class="row">
+    <?php
+        $result=$mysqli->query("SELECT * FROM `galeria` ORDER BY status DESC");
+        if($result){
+            while($row=$result->fetch_array(MYSQLI_ASSOC)){ 
+                ?>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card-panel grey lighten-5 z-depth-1">
+                            <div class="row valign-wrapper">
+                                <div class="col s4 left">
+                                    <?php echo "<img src='./pages/DAO/galeriaDAO.php?id=".$row["id"]."' alt='' class='circle responsive-img'>" ?>
+                                </div>
+                            <div class="col s8">
+                                <span class="black-text titulo-imagen">
+                                <?php echo $row["titulo"]; ?>
+                                </span>
+                                <br>
+                                <br>
+                                <a class='modal-trigger negritas subrayado right' href='#modal2' onclick='mostrarCliente(this.parentElement)' dir='".$row["id"]."' value='".$row["id"]."'>EDITAR PUBLICACIÓN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
                 <?php
-                $result=$mysqli->query("SELECT * FROM `carrusel` ORDER BY status DESC");
+            }
+        }
+                ?>
+
+
+                
+
+                <?php
+                $result=$mysqli->query("SELECT * FROM `galeria` ORDER BY status DESC");
                 if($result){
-                    while($row=$result->fetch_array(MYSQLI_ASSOC)){    
+                    while($row=$result->fetch_array(MYSQLI_ASSOC)){ 
+
                         
-                        echo "<div class='col s12 m4'>";
+                        echo "<div class='col s4'>";
                             echo "<div  class='card'>";
                                 echo "<div class='card-image'>";
-                                    echo "<img class='imagen-imagen' src='./pages/DAO/carruselDAO.php?id=".$row["id"]."' width=300  height=200>";
+                                    echo "<img class='imagen-imagen' src='./pages/DAO/servicioDAO.php?id=".$row["id"]."' width=300  height=200>";
                                     echo "<span class='card-title titulo-imagen CardTitulo'>".$row["titulo"]."</span>";
                                 echo "</div>";
 
@@ -77,7 +109,7 @@
 
 
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red modal-trigger tooltipped pulse scale-transition scale-in" data-position="left" data-tooltip="Agregar una publicación" href="#modal1">
+            <a class="btn-floating btn-large red modal-trigger tooltipped" data-position="left" data-tooltip="Agregar una publicación" href="#modal1">
                 <i class="large material-icons" href="#modal1">add</i>
             </a>
         </div>
@@ -89,7 +121,7 @@
                 <h4>NUEVO REGISTRO</h4>
 
                 <div class="row">
-                    <form enctype="multipart/form-data" action="pages/DAO/carruselDAO.php?case=1" method="post" class="col s12">
+                    <form enctype="multipart/form-data" action="pages/DAO/servicioDAO.php?case=1" method="post" class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
                                 <input name="txtTitulo" type="text" required class="validate">
@@ -132,11 +164,11 @@
             function mostrarCliente(contenedor) {
                 var modal = document.getElementById('modal2');
 
-                modal.getElementsByClassName('id-modal')[0].innerText = contenedor.getElementsByClassName('id-imagen')[0].innerText;
+                // modal.getElementsByClassName('id-modal')[0].innerText = contenedor.getElementsByClassName('id-imagen')[0].innerText;
                 // Cliente
-                modal.getElementsByClassName('titulo-modal')[0].innerText = contenedor.getElementsByClassName('titulo-imagen')[0].innerText;
+                modal.getElementsByClassName('titulo-modal')[0].innerText = document.getElementsByClassName('titulo-imagen')[0].innerText;
                 // Descripcion
-                modal.getElementsByClassName('descripcion-modal')[0].innerText = contenedor.getElementsByClassName('descripcion-imagen')[0].innerText;
+                // modal.getElementsByClassName('descripcion-modal')[0].innerText = contenedor.getElementsByClassName('descripcion-imagen')[0].innerText;
 
                 // modal.getElementsByClassName('statul-modal')[0].innerText = contenedor.getElementsByClassName('status-imagen')[0].innerText;
                 
@@ -171,7 +203,7 @@
 
 
                 <div class="row">
-                    <form enctype="multipart/form-data" action="pages/DAO/carruselDAO.php?case=2" method="post" class="col s12">
+                    <form enctype="multipart/form-data" action="pages/DAO/servicioDAO.php?case=2" method="post" class="col s12">
                         <div class="row">
                             <div class="col s12">
                                 <div class='switch right'> 

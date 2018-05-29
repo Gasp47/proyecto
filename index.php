@@ -1,6 +1,18 @@
 <?php
-include 'pages/DAO/conexion.php';
+            session_start();
+            
+   if(!$_SESSION['usuario']){
+             //toda la página que tenes
+             echo "NEL PASTEL PUTITO";
+             exit();
+
+            
+   }else{
+
+    include 'pages/DAO/conexion.php';
+       
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +78,7 @@ include 'pages/DAO/conexion.php';
                     </div>
                     
                     <?php
-                        $result=$mysqli->query("SELECT * FROM `usuario` WHERE id=1");
+                        $result=$mysqli->query("SELECT * FROM `usuario` WHERE id='".$_SESSION['usuario']."'");
                         if($result){
                             while($row=$result->fetch_array(MYSQLI_ASSOC)){  
                     ?>
@@ -124,10 +136,10 @@ include 'pages/DAO/conexion.php';
                             include 'pages/carrusel.php';
                             break;
                         case 3:
-                            include 'pages/servicios.php';
+                            include 'pages/servicio.php';
                             break;
                         case 4:
-                            
+                            include 'pages/galeria.php';
                             break;
                         default:
                             echo "Ninguno válido";
@@ -160,3 +172,7 @@ include 'pages/DAO/conexion.php';
     </script>
 </body>
 </html>
+
+<?php
+   }
+?>
