@@ -10,10 +10,10 @@ if(isset( $_GET["id"])){
 
 switch($_GET["case"]){
     case 1:
-        agregar($mysqli,$_POST["txtTitulo"],$_POST["txtDescripcion"]);
+        agregar($mysqli,$_POST["txtTitulo"]);
         break;
     case 2:
-        modificar($mysqli,$_POST["txtId"],$_POST["txtTitulo"],$_POST["txtDescripcion"],$_POST["txtCheck"]);
+        modificar($mysqli,$_POST["txtId"],$_POST["txtTitulo"],$_POST["txtCheck"]);
         break;
     
     default:
@@ -32,7 +32,7 @@ function mostrarImagen($mysqli){
     echo $row["imagen"];
 }
 
-function modificar($mysqli,$idT,$titulo,$descripcion,$status){
+function modificar($mysqli,$idT,$titulo,$status){
     # Comprovamos que se haya subido un fichero
     if (is_uploaded_file($_FILES['userfile']["tmp_name"])){
 
@@ -41,7 +41,7 @@ function modificar($mysqli,$idT,$titulo,$descripcion,$status){
         {
             $imagenEscapes=$mysqli->real_escape_string(file_get_contents($_FILES["userfile"]["tmp_name"]));
 
-            $sql="UPDATE servicios SET titulo='".$titulo."', status='".$status ."',descripcion='".$descripcion."', imagen='". $imagenEscapes ."' WHERE id=".$idT;
+            $sql="UPDATE galeria SET titulo='".$titulo."', status='".$status ."', imagen='". $imagenEscapes ."' WHERE id=".$idT;
             
             $mysqli->query($sql);
 
@@ -49,22 +49,22 @@ function modificar($mysqli,$idT,$titulo,$descripcion,$status){
             $id=$mysqli->insert_id;
 
             # Mostramos la imagen agregada
-            header('Location: ../../index.php?id=3');
+            header('Location: ../../index.php?id=4');
         }else{
             echo "<div class='error'>Error: El formato de archivo tiene que ser JPG, GIF, BMP o PNG.</div>";
         }
     }else{
 
-        $sql="UPDATE servicios SET titulo='".$titulo."', descripcion='".$descripcion."', status='".$status."' WHERE id=".$idT;
+        $sql="UPDATE galeria SET titulo='".$titulo."', status='".$status."' WHERE id=".$idT;
         
         $mysqli->query($sql);
-        header('Location: ../../index.php?id=3');
+        header('Location: ../../index.php?id=4');
         
     }
 }
 
 
-function agregar($mysqli,$titulo,$descripcion){
+function agregar($mysqli,$titulo){
     # Comprovamos que se haya subido un fichero
     if (is_uploaded_file($_FILES['userfile']["tmp_name"])){
 
@@ -73,8 +73,8 @@ function agregar($mysqli,$titulo,$descripcion){
         {
             $imagenEscapes=$mysqli->real_escape_string(file_get_contents($_FILES["userfile"]["tmp_name"]));
 
-            $sql="INSERT INTO `servicios` (titulo,descripcion,`status`,imagen) VALUES   
-                ('".$titulo."','".$descripcion."','1','".$imagenEscapes."')";
+            $sql="INSERT INTO `galeria` (titulo,`status`,imagen) VALUES   
+                ('".$titulo."','1','".$imagenEscapes."')";
 
             
             $mysqli->query($sql);
@@ -84,7 +84,7 @@ function agregar($mysqli,$titulo,$descripcion){
 
             # Mostramos la imagen agregada
             echo "<div class='mensaje'>Imagen agregada con el id ".$id."</div>";
-            header('Location: ../../index.php?id=3');
+            header('Location: ../../index.php?id=4');
         }else{
             echo "<div class='error'>Error: El formato de archivo tiene que ser JPG, GIF, BMP o PNG.</div>";
         }

@@ -1,16 +1,10 @@
 <?php
-            session_start();
-            
-   if(!$_SESSION['usuario']){
-             //toda la página que tenes
-             echo "NEL PASTEL PUTITO";
-             exit();
 
-            
-   }else{
+    session_start();
+   if(isset ($_SESSION['sesion']) ){
+             // Esto es la página
 
-    include 'pages/DAO/conexion.php';
-       
+             include 'pages/DAO/conexion.php';
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +59,7 @@
                 <a href="#" data-target="nav-mobie" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#" data-target="nav-mobie"><i class="material-icons right">exit_to_app</i>Cerrar Sesión</a></li>
+                    <li><a href="pages/logout.php" data-target="nav-mobie"><i class="material-icons right">exit_to_app</i>Cerrar Sesión</a></li>
                 </ul>
             </div>
         </nav>
@@ -78,7 +72,7 @@
                     </div>
                     
                     <?php
-                        $result=$mysqli->query("SELECT * FROM `usuario` WHERE id='".$_SESSION['usuario']."'");
+                        $result=$mysqli->query("SELECT * FROM `usuario` WHERE id='".$_SESSION['sesion']."'");
                         if($result){
                             while($row=$result->fetch_array(MYSQLI_ASSOC)){  
                     ?>
@@ -174,5 +168,7 @@
 </html>
 
 <?php
+}else{
+    header('Location: ./pages/login.php');
    }
 ?>

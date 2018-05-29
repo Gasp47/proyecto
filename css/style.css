@@ -49,3 +49,7 @@
 .subrayado {
     text-decoration: underline;
 }
+
+.back {
+    background-image: url("../img/imagen.jpg");
+}
