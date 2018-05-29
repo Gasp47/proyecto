@@ -1,5 +1,6 @@
 <?php
 
+    
     session_start();
    if(isset ($_SESSION['sesion']) ){
              // Esto es la página
@@ -48,7 +49,7 @@
                 
                                 }
                             }else{
-                                echo "Ninguno válido";
+                                echo "Menú Principal";
                             }
                         }catch (Exception $e){
                             echo "Mal";
@@ -64,7 +65,7 @@
             </div>
         </nav>
 
-        <ul id="nav-mobie" class="sidenav sidenav-fixed svFixed sidenavLeft #dcedc8 light-green lighten-4">
+        <ul id="nav-mobie" class="sidenav sidenav-fixed svFixed sidenavLeft #7FB3D5 light-green lighten-4">
             <li>
                 <div class="user-view">
                     <div class="background">
@@ -124,7 +125,7 @@
                 if(isset( $_GET["id"] ) ){
                     switch ($_GET["id"] ){
                         case 1:
-                            
+                            include 'pages/principal.php';
                             break;
                         case 2:
                             include 'pages/carrusel.php';
@@ -136,12 +137,11 @@
                             include 'pages/galeria.php';
                             break;
                         default:
-                            echo "Ninguno válido";
+                            include 'pages/principal.php';
                             break;
-    
                     }
                 }else{
-                    echo "Ninguno válido";
+                    include 'pages/principal.php';
                 }
             }catch (Exception $e){
                 echo "Mal";

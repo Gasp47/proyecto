@@ -1,8 +1,14 @@
 <?php
-    include 'DAO/conexion.php';
+
+    if(!$_SESSION)
+    session_start();
+   if(isset ($_SESSION['sesion']) ){
+             // Esto es la página
+
+             include 'pages/DAO/conexion.php';
 ?>
 
-    <!DOCTYPE html>
+  <!DOCTYPE html>
     <html lang="en">
 
     <head>
@@ -241,3 +247,9 @@
 
 
     </html>
+
+<?php
+}else{
+    header('Location: ../pages/login.php');
+   }
+?>

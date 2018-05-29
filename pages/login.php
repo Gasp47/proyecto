@@ -42,12 +42,15 @@ session_start();
                                 
                                 <div class="row">
                                     <div class="input-field col s12">
+                                        <i class="material-icons prefix">person</i>
                                         <input required name="txtUsuario" id="usuario" type="text">
                                         <label for="usuario">Usuario</label>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="input-field col s12">
+                                        <i class="material-icons prefix">vpn_key</i>
                                         <input required name="txtContrasenia" id="password" type="password" >
                                         <label for="password">Contraseña</label>
                                     </div>
