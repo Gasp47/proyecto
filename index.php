@@ -25,7 +25,7 @@
 <header>
         <nav>
             <!-- navbar content here  -->
-            <div class="nav-wrapper #9ccc65 light-green lighten-1">
+            <div class="nav-wrapper light-bluee lighten-1">
                 <a href="#" class="brand-logo center">
                     <?php 
                         try{
@@ -65,7 +65,7 @@
             </div>
         </nav>
 
-        <ul id="nav-mobie" class="sidenav sidenav-fixed svFixed sidenavLeft #7FB3D5 light-green lighten-4">
+        <ul id="nav-mobie" class="sidenav sidenav-fixed svFixed sidenavLeft #7FB3D5 light-blue lighten-4">
             <li>
                 <div class="user-view">
                     <div class="background">

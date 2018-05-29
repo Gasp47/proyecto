@@ -23,7 +23,14 @@
     <link href="./css/materialize.min.css" type="text/css" rel="stylesheet">
     <link href="./css/style.css?0.0" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body class="">
+
+<div class="fullhd">
+    <img class="fullhd" src="./img/portada.jpg" alt="">
+</div>
+
+
+
     
 </body>
 </html>
